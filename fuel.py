@@ -1,3 +1,5 @@
+#day1
+
 import sys
 
 first = sys.stdin.readline().strip()

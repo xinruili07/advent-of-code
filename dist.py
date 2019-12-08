@@ -29,4 +29,8 @@ second_wire_points = find_all_positions(secondwire)
 intersections = [element for element in set(first_wire_points) & set(second_wire_points)]
 print(min(abs(element[0]) + abs(element[1]) for element in intersections))
 
+steps1 = (first_wire_points.index(intersect) + second_wire_points.index(intersect) + 2 for intersect in intersections)
+print(min(steps1))
+
+
 

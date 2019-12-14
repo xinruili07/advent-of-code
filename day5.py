@@ -27,6 +27,7 @@ while original[index] != 99:
         original[original[index+3]] = value(intmodes[2], index+1) * value(intmodes[1], index+2)
         index += 4
     
+    #part 1
     elif intmodes[4] == 3:
         print("Input value: ")
         inputval = input()
@@ -37,5 +38,34 @@ while original[index] != 99:
     elif intmodes[4] == 4:
         print(value(intmodes[2], index+1))
         index += 2
+    
+    #part 2
+    elif intmodes[4] == 5:
+        if value(intmodes[2], index+1) != 0:
+            index = value(intmodes[1], index+2)
+        else:
+            index += 3
+
+    elif intmodes[4] == 6:
+        if value(intmodes[2], index+1) == 0:
+            index = value(intmodes[1], index+2)
+        else:
+            index += 3
+    
+    elif intmodes[4] == 7:
+        if value(intmodes[2], index+1) < value(intmodes[1], index+2):
+            original[original[index+3]] = 1
+        else:
+            original[original[index+3]] = 0
+        index += 4
+
+    elif intmodes[4] == 8:
+        if value(intmodes[2], index+1) == value(intmodes[1], index+2):
+            original[original[index+3]] = 1
+            
+        else:
+            original[original[index+3]] = 0
+        index += 4
+
     
     

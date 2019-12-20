@@ -14,11 +14,11 @@ planets = list(set(list1))
 planets.remove("COM")
 
 def findOrbits(orbitList, planet, count):
-    for i in orbitList:
+    for orbit in orbitList:
        
         localCount = count
-        end = i[0]
-        debut = i[1]
+        end = orbit[0]
+        debut = orbit[1]
        
         if(debut == planet):
             if(end != "COM"):
@@ -35,3 +35,31 @@ for planet in planets:
     total += findOrbits(orbits, planet, 0)
 
 print(total)
+
+#part 2
+def findPath(orbitList, planet, array):
+    for orbit in orbitList:
+       
+        localArray = array
+        end = orbit[0]
+        debut = orbit[1]
+       
+        if(debut == planet):
+            if(end != "COM"):
+                localArray.append(orbit)
+                returnArray = findPath(orbitList, end, localArray)
+            else:
+                localArray.append(orbit)
+                returnArray = localArray
+                break
+    return returnArray
+
+YOU_LIST = findPath(orbits, "YOU", [])
+SANTA_LIST = findPath(orbits, "SAN", [])
+count = 0 
+for path1 in YOU_LIST:
+    for path2 in SANTA_LIST:
+        if path1[0] == path2[0] and path1 != path2:
+            count = YOU_LIST.index(path1) + SANTA_LIST.index(path2)
+
+print(count)
